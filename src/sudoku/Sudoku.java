@@ -1,19 +1,18 @@
 package sudoku;
 
-import java.util.List;
-
 /**
  * Created by TT on 20.12.2015.
  */
 public class Sudoku {
     public static void main(String[] args) {
 
+
         Field field = new MapMaker().parseReader();
         Solver solver = new Solver(field);
-        field.assignGroups();
-        System.out.println("show fields\n" + showArray(field.field));
-
-        System.out.println("show columns\n"+showArray(field.columns));
+//        field.assignGroups();
+//        System.out.println("show fields\n" + showArray(field.field));
+//
+//        System.out.println("show columns\n"+showArray(field.columns));
 
 //        field.showField();
 //        solve(field, solver);
@@ -31,7 +30,7 @@ public class Sudoku {
 //            unsolved = field.getUnSolvedSize();
 //        }
         field.showField();
-        System.out.println(field.getColumn(0));
+//        System.out.println(field.getColumn(0));
     }
 
     private static void solve(Field field, Solver solver) {

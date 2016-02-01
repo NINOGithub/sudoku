@@ -1,27 +1,30 @@
 package sudoku;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-/**
- * Created by TT on 22.12.2015.
- */
+
 public class MapMaker {
     Field field;
 
     public Field parseReader() {
 
 
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(".." + File.separator + "resources" + File.separator + "sudoku.txt"));
+        Path path = Paths.get("..", "resources", "sudoku.txt");
+        Charset charset = Charset.forName("US-ASCII");
+
+        try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
             field = new Field();
-            parseReader(bufferedReader);
+            parseReader(reader);
             field.count();
         } catch (IOException e) {
-            throw new RuntimeException("Cant parse field", e);
+            e.printStackTrace();
         }
+
         return field;
 
     }
