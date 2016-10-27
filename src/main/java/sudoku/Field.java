@@ -1,11 +1,14 @@
 package sudoku;
 
+import org.apache.log4j.Logger;
+
 import java.util.*;
 
 /**
  * Created by TT on 20.12.2015.
  */
 public class Field {
+    final static Logger log = Logger.getLogger(Field.class);
     Set<Cell> unSolved= new HashSet<>();
     Cell[][] field= new Cell[9][9];
     Cell[]rows;
@@ -55,17 +58,17 @@ public class Field {
     public void showField(){
       for(Cell[]row:field){
           for(Cell cell:row){
-              System.out.print(ValueAdapter.getValue(cell.getValue()));
+              log.debug(ValueAdapter.getValue(cell.getValue()));
           }
-          System.out.println("");
+          log.debug("");
       }
     }
     public void showField2(){
       for(Cell[]row:field){
           for(Cell cell:row){
-              System.out.print("\t" + cell.getId() + " " + ValueAdapter.getValue(cell.getValue()));
+              log.debug("\t" + cell.getId() + " " + ValueAdapter.getValue(cell.getValue()));
           }
-          System.out.println("");
+          log.debug("");
       }
     }
     public  List<List<Cell>> getField(){
@@ -80,7 +83,7 @@ public class Field {
         for( Cell[] row:field){
 
             for(Cell cell:row){
-                System.out.println(" "+cell);
+               log.debug(" "+cell);
                 columns[cell.getX()][cell.getY()]=cell;
 
             }

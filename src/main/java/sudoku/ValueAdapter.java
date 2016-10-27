@@ -2,6 +2,7 @@ package sudoku;
 
 
 public class ValueAdapter {
+
     public static Value getValue(char c){
         switch (c){
             case '1':return Value.ONE;

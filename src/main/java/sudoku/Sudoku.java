@@ -1,9 +1,12 @@
 package sudoku;
 
+import org.apache.log4j.Logger;
+
 /**
  * Created by TT on 20.12.2015.
  */
 public class Sudoku {
+    final static Logger log = Logger.getLogger(Sudoku.class);
     public static void main(String[] args) {
 
 
@@ -37,12 +40,12 @@ public class Sudoku {
         int n = 0;
         int unsolved = -1;
         while (field.getUnSolvedSize() != 0) {
-            System.out.println("Pass #" + n + " " + field.getUnSolvedSize() + "/" + field.getTotal() + " = " + field.percentage());
+            log.debug("Pass #" + n + " " + field.getUnSolvedSize() + "/" + field.getTotal() + " = " + field.percentage());
             String previousPassInfo = solver.getPassInfo();
             solver.pass();
             if (unsolved == field.getUnSolvedSize()) {
-                System.out.println("No progress");
-                System.out.println("Previous log " + previousPassInfo);
+                log.debug("No progress");
+                log.debug("Previous log " + previousPassInfo);
                 break;
             }
             unsolved = field.getUnSolvedSize();
@@ -52,7 +55,7 @@ public class Sudoku {
 //            System.out.println("4:6\t" + c.getForbiddenValues());
             n++;
         }
-        System.out.println("Pass #" + n + " " + field.getUnSolvedSize() + "/" + field.getTotal() + " = " + field.percentage());
+        log.debug("Pass #" + n + " " + field.getUnSolvedSize() + "/" + field.getTotal() + " = " + field.percentage());
     }
 
     private static <T> String showArray(T[][] array) {

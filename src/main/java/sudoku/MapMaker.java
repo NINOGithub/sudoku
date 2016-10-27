@@ -1,5 +1,7 @@
 package sudoku;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -8,13 +10,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
+
+
 public class MapMaker {
     Field field;
-
+    final static Logger log = Logger.getLogger(MapMaker.class);
     public Field parseReader() {
+        log.debug(String.format("User dir =%s",System.getProperty("user.dir")));
 
-
-        Path path = Paths.get("..", "resources", "sudoku.txt");
+        Path path = Paths.get( "src","main","resources", "sudoku.txt");
         Charset charset = Charset.forName("US-ASCII");
 
         try (BufferedReader reader = Files.newBufferedReader(path, charset)) {

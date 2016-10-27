@@ -1,11 +1,16 @@
 package sudoku;
 
+import org.apache.log4j.Logger;
+
 import java.util.*;
+
+
 
 /**
  * Created by TT on 20.12.2015.
  */
 public class Cell {
+    final static Logger log = Logger.getLogger(Cell.class);
     private String id;
 
 int x;
@@ -63,7 +68,7 @@ int x;
             valuesToForbid.remove(v);
             forbidValues(valuesToForbid);
         }else if(this.value.equals(v)){
-//            System.out.println("been there done that");
+            log.debug("been there done that");
         }else{
             throw new RuntimeException("IT does not fit");
         }
